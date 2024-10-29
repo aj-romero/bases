@@ -1,0 +1,17 @@
+<h1>{{name}}</h1>
+
+<dl>
+    <td>Nombre: </td>
+    <dd>{{name}}</dd>
+
+    <td>Edad: </td>
+    <dd>{{age}}</dd>
+
+    <td>metodo: </td>
+    <dd>{{heroDescription}}</dd>
+    <td>capitalizado: </td>
+    <dd>{{ capitalizedName}}</dd>
+</dl>
+
+<button class="btn btn-primary mx-2" (click)="changeHero('spiderman')">Cambiar nombre</button>
+<button class="btn btn-primary" (click)="changAge(25)">Cambiar edad</button>
