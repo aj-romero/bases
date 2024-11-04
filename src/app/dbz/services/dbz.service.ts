@@ -1,16 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
 
-@Component({
-    selector: 'app-dbz-main-page',
-    templateUrl: './main-page.components.html'
-})
-
-export class MainPageComponent implements OnInit {
-    
-    constructor() { }
-
-    ngOnInit() { }
+@Injectable({providedIn: 'root'})
+export class DBZService {
     public characters: Character[] = [
         {
             name: 'Krillin',
@@ -36,5 +28,4 @@ export class MainPageComponent implements OnInit {
     onEventDeleteCharacter(i:number):void {
         this.characters.splice(i,1);
     }
-    
 }
