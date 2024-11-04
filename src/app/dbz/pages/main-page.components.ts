@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Character } from '../interfaces/character.interface';
+import { DBZService } from '../services/dbz.service';
 
 @Component({
     selector: 'app-dbz-main-page',
@@ -8,33 +9,19 @@ import { Character } from '../interfaces/character.interface';
 
 export class MainPageComponent implements OnInit {
     
-    constructor() { }
+    constructor(private readonly dbzService: DBZService) { }
 
     ngOnInit() { }
-    public characters: Character[] = [
-        {
-            name: 'Krillin',
-            power: 1000
-        },
-        {
-            name: 'Goku',
-            power: 9500
-        },
-        {
-            name: 'Vegeta',
-            power: 8500
-        }
-    ];
-    
-    onNewCharacter( charac: Character) {
-        console.log('MainPage');
-        console.log(charac);
-        this.characters.push({...charac});
-        
+   
+    get characters(): Character [] {
+        return [...this.dbzService.characters]; //mantener el objeto inmutable
     }
 
-    onEventDeleteCharacter(i:number):void {
-        this.characters.splice(i,1);
+    onDeleteCharacter(id: string): void {
+        this.dbzService.onEventDeleteCharacter(id);
     }
-    
+
+    onAddCharacter(n: Character): void {
+        this.dbzService.onNewCharacter(n);
+    }
 }
